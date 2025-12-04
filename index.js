@@ -43,12 +43,17 @@ const app = express();
 
 
 app.get('/', async (req, res) => {
-    const result = await pool.query('SELECT * FROM posts');
+    const result = await pool.query('SELECT * FROM filmer');
     console.log({result});
-    let html = "<h1>posts</h1>"
+    let html = "<h1>Filmer</h1>"
     html += "<ul>"
     for (const row of result) {
-        html += "<li>" + JSON.stringify(row) + "</li>"
+        html+="<li><ul>"
+        html += "<li>" + row.film_navn + "</li>"
+        html += "<li>" + row.film_regisør + "</li>"
+        html += "<li>" + row.film_sjanger + "</li>"
+        html += "<li>" + row.film_rating + "</li>"
+        html += "</ul></li>"
     }
     html += "</ul>"
     res.send(html);

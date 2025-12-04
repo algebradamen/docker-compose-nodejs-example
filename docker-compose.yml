@@ -1,0 +1,30 @@
+services:
+  db:                        # vi velger et navn på tjenesten
+    image: mariadb           # navn på image, vil bli hentet fra docker-hub
+    environment:             # miljøvariabler:
+      MARIADB_ROOT_PASSWORD: example
+      MARIADB_DATABASE: demo
+    ports: 
+       - 3306:3306     # mapper port 3306 i containeren til port 3306 på vertsmaskinen
+    volumes:                # volum for å lagre data utenfor containeren
+      - ./db_data:/var/lib/mysql 
+      
+  phpmyadmin:            # velger også her et navn på tjenesten
+    image: phpmyadmin    # navn på image
+    depends_on:
+      - db
+    ports:
+      - 8080:80
+    environment:         # miljøvariabler:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: example
+  app:               # navn på tjenesten
+      build: .         # . betyr samme katalog som docker-compose.yml
+      ports:
+        - 3000:3000
+      depends_on:
+        - db
+      environment:     # miljøvariabler:
+        DB_HOST: db
+      restart: always  # start opp tjenesten på nytt hvis den stopper
