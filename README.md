@@ -1,9 +1,11 @@
-# docker-compose-nodejs-example
-## app med docker compose og index der en henter data fra databasen  
+## docker-compose-nodejs-example
+# app med docker compose der en henter data fra MaraiDB databasen    
 
 
-# Hvordan starte applilaksjon:  
-docker compose up
+Hvordan starte applilaksjon:    
+docker compose up  
+  
+  
 # bygge på nytt ved eventuelle endringer  
 docker compse up --build
 
