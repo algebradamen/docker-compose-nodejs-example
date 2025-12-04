@@ -2,10 +2,10 @@
 # app med docker compose der en henter data fra MaraiDB databasen    
 
 
-Hvordan starte applilaksjon:    
+Hvordan starte applikasjon:    
 docker compose up  
   
-  
+
 # bygge på nytt ved eventuelle endringer  
 docker compse up --build
 
@@ -13,3 +13,4 @@ docker compse up --build
 MySQL
 Database Client
 database-client.com
+
